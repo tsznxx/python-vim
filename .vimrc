@@ -7,6 +7,10 @@ au FileType python source ~/.vim/scripts/python.vim
 au FileType python source ~/.vim/scripts/python_fold.vim
 au FileType pyrex source ~/.vim/scripts/pyrex.vim
 
+
+"set viminfo='10,\"100,:20,%,n~/.viminfo
+
+
 if has("autocmd")
     autocmd FileType python set complete+=k~/.vim/tools/pydiction
     "autocmd BufNewFile *.pl read !date
@@ -23,18 +27,20 @@ if has("autocmd")
     autocmd BufNewFile *.cpp 0r ~/.vim/skeleton/skeleton.cpp
     "Add sekeleton template for c files
     autocmd BufNewFile *.c 0r ~/.vim/skeleton/skeleton.c
+
+	autocmd BufReadPost * call setpos(".", getpos("'\""))
+	autocmd BufNewFile *.cpp  ks|call SubstituteFileName()|'s
+	autocmd BufNewFile *.py   ks|call SubstituteFileName()|'s
+	autocmd BufNewFile *.h    ks|call SubstituteHeader()|'s
+	autocmd BufNewFile,BufWritePre,FileWritePre * ks|call UpdateTimeStamp()|'s
+	autocmd BufWritePre,FileWritePre *.py ks|call SubstituteTab()|'s
 endif
 
-autocmd BufNewFile *.cpp  ks|call SubstituteFileName()|'s
-autocmd BufNewFile *.py   ks|call SubstituteFileName()|'s
-autocmd BufNewFile *.h    ks|call SubstituteHeader()|'s
-autocmd BufNewFile,BufWritePre,FileWritePre * ks|call UpdateTimeStamp()|'s
-autocmd BufWritePre,FileWritePre *.py ks|call SubstituteTab()|'s
-
-
 " paste key map
-map <F10> :set paste <CR>
-map <F11> :set nopaste <CR>
+map <F7>  :set nu <CR>
+map <F8>  :set nonu <CR>
+map <F9>  :set paste <CR>
+map <F10> :set nopaste <CR>
 
 set nocompatible
 set number
@@ -72,6 +78,10 @@ endif
 
 let perl_fold=1
 
+" ************************************************************************
+" Abbreviations
+" ************************************************************************
+
 iab YTS <C-R>=strftime("#Last-modified: %d %b %Y %X")<cr>
 " Date/Time stamps
 " %a - Day of the week
@@ -88,8 +98,7 @@ iab YDATETIME <c-r>=strftime(": %a %b %d, %Y %H:%M:%S %Z")<cr>
 
 " ************************************************************************
 "  F U N C T I O N S
-
-"
+" ************************************************************************
 
 if !exists("*UpdateTimeStamp")
 function! UpdateTimeStamp()
@@ -141,5 +150,3 @@ function! SubstituteHeader()
 endfunction
 endif
 
-
-fixdel

@@ -7,10 +7,6 @@ au FileType python source ~/.vim/scripts/python.vim
 au FileType python source ~/.vim/scripts/python_fold.vim
 au FileType pyrex source ~/.vim/scripts/pyrex.vim
 
-
-"set viminfo='10,\"100,:20,%,n~/.viminfo
-
-
 if has("autocmd")
     autocmd FileType python set complete+=k~/.vim/tools/pydiction
     "autocmd BufNewFile *.pl read !date
@@ -37,8 +33,8 @@ if has("autocmd")
 endif
 
 " paste key map
-map <F7>  :set nu <CR>
-map <F8>  :set nonu <CR>
+map <F5>  :set nu <CR>
+map <F6>  :set nonu <CR>
 map <F9>  :set paste <CR>
 map <F10> :set nopaste <CR>
 

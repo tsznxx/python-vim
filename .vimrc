@@ -78,7 +78,7 @@ let perl_fold=1
 " Abbreviations
 " ************************************************************************
 
-iab YTS <C-R>=strftime("#Last-modified: %d %b %Y %X")<cr>
+iab YTS <C-R>=strftime("Last-modified: %d %b %Y %X")<cr>
 " Date/Time stamps
 " %a - Day of the week
 " %b - Month

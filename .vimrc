@@ -1,6 +1,6 @@
 " Pathogen
-execute pathogen#infect()
-call pathogen#helptags() " generate helptags for everything in 'runtimepath'
+" execute pathogen#infect()
+" call pathogen#helptags() " generate helptags for everything in 'runtimepath'
 syntax on
 
 au FileType python source ~/.vim/scripts/python.vim
